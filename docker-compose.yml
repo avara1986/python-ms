@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    volumes:
+      - ./databases/:/var/lib/postgresql/data/
+  web:
+    build: ./template
+    ports:
+    - "5000:5000"
+    links:
+    - oauth
+    volumes:
+      - .:/template/app
+  oauth:
+    build: ./oauth
+    ports:
+    - "8000:5000"
+    volumes:
+      - .:/oauth/app
