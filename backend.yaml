@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oauth
+spec:
+  selector:
+    app: oauth
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: oauth
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: oauth
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: oauth-python
+          image: "oauth-python:v1"
+          ports:
+            - name: http
+              containerPort: 5000

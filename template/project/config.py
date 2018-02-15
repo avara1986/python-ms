@@ -21,14 +21,14 @@ class PreConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/db.sqlite3'.format(os.path.dirname(BASE_DIR))
-    OAUTH_SERVER = "http://oauth:8000/protected"
+    OAUTH_SERVER = "http://oauth:5000/protected"
 
 
 class ProdConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, "prod.db")
-    OAUTH_SERVER = "http://oauth:8000/protected"
+    OAUTH_SERVER = "http://oauth:5000/protected"
 
 
 config = {
