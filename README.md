@@ -37,6 +37,11 @@ Creamos la imagen de nuestros proyectos:
     cd ../template/
     docker build -t colors-python:v1 .
 
+Podemos testear nuestra imagen con:
+
+    docker run -d -p 9411:9411 oauth-python
+    docker run -d -p 9411:9411 openzipkin/zipkin
+
 ## Metodo 1 (yaml)
 
     kubectl create -f backend.yaml

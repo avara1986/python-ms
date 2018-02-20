@@ -21,3 +21,9 @@ services:
     - "8000:5000"
     volumes:
       - .:/oauth/app
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+    - "9411:9411"
+    volumes:
+      - .:/oauth/app
