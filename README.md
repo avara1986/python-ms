@@ -39,8 +39,20 @@ Creamos la imagen de nuestros proyectos:
 
 Podemos testear nuestra imagen con:
 
-    docker run -d -p 9411:9411 oauth-python
+    docker run -d -p 8000:8000 oauth-python
+    
+Testear nuestro stack con zipkin
+    
     docker run -d -p 9411:9411 openzipkin/zipkin
+    
+Testear nuestro stack con Kibana **PRECAUCIÓN! Kibana consume muchísimo. Puede dejarte minikube tostado**
+
+    docker run -d --name my-elasticsearch -p 9300:9300 -p 9200:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.2
+    docker run -d --link my-elasticsearch:elasticsearch -p 5601:5601 docker.elastic.co/kibana/kibana:6.2.2
+
+Ver resultados de elasticsearch en:
+    
+    http://192.168.99.100:9200/my_python_index-2018.03.11/_search?pretty=true&q=*:*
 
 ## Metodo 1 (yaml)
 

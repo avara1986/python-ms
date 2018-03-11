@@ -5,6 +5,9 @@ import os
 from flasgger import Swagger
 from flask import Flask
 from project.config import config
+from cmreslogging.handlers import CMRESHandler
+
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "default")
 
 swagger_config = {
     "headers": [
@@ -33,7 +36,14 @@ def create_app():
     from project.views import views_bp as views_blueprint
 
     app = Flask(__name__)
-    app.config.from_object(config[os.environ.get("ENVIRONMENT", "default")])
+    app.config.from_object(config[ENVIRONMENT])
+    if not app.config["DEBUG"]:
+        handler = CMRESHandler(hosts=[{'host': '192.168.99.100', 'port': 9200}],
+                               auth_type=CMRESHandler.AuthType.NO_AUTH,
+                               es_index_name="my_python_index",
+                               es_additional_fields={'App': app.config["APP_NAME"], 'Environment': ENVIRONMENT})
+
+        app.logger.addHandler(handler)
     db.init_app(app)
     swagger = Swagger(app, config=swagger_config)
 
