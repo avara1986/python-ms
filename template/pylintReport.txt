@@ -1,0 +1,59 @@
+************* Module project.__init__
+C: 76, 0: Line too long (112/100) (line-too-long)
+************* Module project
+C:  1, 0: Missing module docstring (missing-docstring)
+C: 44, 0: Missing class docstring (missing-docstring)
+R: 52, 8: Unnecessary "else" after "return" (no-else-return)
+R: 44, 0: Too few public methods (0/2) (too-few-public-methods)
+C: 61, 0: Missing function docstring (missing-docstring)
+************* Module project.config
+C:  1, 0: Missing module docstring (missing-docstring)
+R:  7, 0: Too few public methods (0/2) (too-few-public-methods)
+R: 17, 0: Too few public methods (0/2) (too-few-public-methods)
+R: 27, 0: Too few public methods (0/2) (too-few-public-methods)
+R: 36, 0: Too few public methods (0/2) (too-few-public-methods)
+R: 43, 0: Too few public methods (0/2) (too-few-public-methods)
+************* Module project.models
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  6, 0: Constant name "db" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module project.models.models
+C:  1, 0: Missing module docstring (missing-docstring)
+E:  7, 0: Unable to import 'flask_login' (import-error)
+W: 14, 0: Method 'process_literal_param' is abstract in class 'TypeDecorator' but is not overridden (abstract-method)
+W: 14, 0: Method 'python_type' is abstract in class 'TypeEngine' but is not overridden (abstract-method)
+R: 22, 8: Unnecessary "else" after "return" (no-else-return)
+R: 28, 8: Unnecessary "else" after "return" (no-else-return)
+R: 33,12: Unnecessary "else" after "return" (no-else-return)
+R: 40, 8: Unnecessary "else" after "return" (no-else-return)
+C: 46, 0: Missing class docstring (missing-docstring)
+R: 46, 0: Too few public methods (0/2) (too-few-public-methods)
+C: 51, 0: Missing class docstring (missing-docstring)
+E: 53,18: Instance of 'SQLAlchemy' has no 'Column' member (no-member)
+E: 53,28: Instance of 'SQLAlchemy' has no 'DateTime' member (no-member)
+R: 51, 0: Too few public methods (0/2) (too-few-public-methods)
+W:  9, 0: Unused Boolean imported from sqlalchemy (unused-import)
+C:  9, 0: third party import "from sqlalchemy import Column, Integer, String, Boolean, DateTime" should be placed before "from flask_login import UserMixin" (wrong-import-order)
+C: 10, 0: third party import "from sqlalchemy.dialects.postgresql import UUID" should be placed before "from flask_login import UserMixin" (wrong-import-order)
+C: 11, 0: third party import "from sqlalchemy.types import TypeDecorator, CHAR" should be placed before "from flask_login import UserMixin" (wrong-import-order)
+************* Module project.tests.test_views
+C:  1, 0: Missing module docstring (missing-docstring)
+C: 17,18: Attribute name "db" doesn't conform to snake_case naming style (invalid-name)
+C: 13, 0: Missing class docstring (missing-docstring)
+C: 24, 4: Missing method docstring (missing-docstring)
+************* Module project.views
+C:  8, 0: Final newline missing (missing-final-newline)
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  6, 0: Constant name "views_bp" doesn't conform to UPPER_CASE naming style (invalid-name)
+C:  8, 0: Import "from project.views import views" should be placed at the top of the module (wrong-import-position)
+************* Module project.views.views
+C:103, 0: Final newline missing (missing-final-newline)
+C:  1, 0: Missing module docstring (missing-docstring)
+C: 14, 0: Argument name "f" doesn't conform to snake_case naming style (invalid-name)
+C: 14, 0: Missing function docstring (missing-docstring)
+C: 16, 4: Missing function docstring (missing-docstring)
+C: 35, 8: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+R:  1, 0: Cyclic import (project.views -> project.views.views) (cyclic-import)
+
+------------------------------------------------------------------
+Your code has been rated at 6.40/10 (previous run: 7.11/10, -0.70)
+

@@ -1,38 +1,54 @@
 # coding=utf-8
-from __future__ import unicode_literals, print_function
-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Config:
+    """Default configuration for all environments"""
+
     DEBUG = False
     TESTING = False
     APP_NAME = "Template"
+    APPLICATION_ROOT = "/template"
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     SECRET_KEY = os.environ.get("SECRET_KEY") or "gjr39dkjn344_!67#"
+
+class TestConfig(Config):
+    """Configuration to run tests"""
+
+    DEBUG = True
+    TESTING = True
+    DATABASE = os.path.join(BASE_DIR, "db_test.sqlite3")
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, "db_test.sqlite3")
+    OAUTH_SERVER = "http://localhost:8000/protected"
 
 
 class DevConfig(Config):
+    """Configuration to run in local environments"""
+
     DEBUG = True
-    DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/db.sqlite3'.format(os.path.dirname(BASE_DIR))
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, "db.sqlite3")
     OAUTH_SERVER = "http://localhost:8000/protected"
 
 
 class PreConfig(Config):
+    """Configuration to run with docker and kubernetes in Preproduction"""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/db.sqlite3'.format(os.path.dirname(BASE_DIR))
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, "db.sqlite3")
     OAUTH_SERVER = "http://oauth:5000/protected"
 
 
 class ProdConfig(Config):
+    """Configuration to run with docker and kubernetes in Production"""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, "prod.db")
     OAUTH_SERVER = "http://oauth:5000/protected"
 
 
-config = {
+CONFIG = {
+    "test": TestConfig,
     "dev": DevConfig,
     "pre": PreConfig,
     "prod": ProdConfig,

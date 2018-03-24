@@ -1,0 +1,5 @@
+-r requirements.txt
+eventlet==0.21.0
+cffi==1.11.2
+gevent==1.2.2
+gunicorn==19.7.1

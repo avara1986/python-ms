@@ -1,0 +1,7 @@
+[run]
+include=
+    *project/*
+omit =
+    Docker/*
+    Kubernetes/*
+    venv/*

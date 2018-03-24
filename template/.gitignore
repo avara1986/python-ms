@@ -1,0 +1,13 @@
+venv
+.idea
+*__pycache__*
+*.pyc
+tmp
+*.sqlite3
+
+
+# COVERAGE
+htmlcov/
+coverage.xml
+nosetests.xml
+.coverage

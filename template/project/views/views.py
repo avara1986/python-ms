@@ -44,7 +44,7 @@ def login_required(f):
     return decorated_function
 
 
-@views_bp.route('/colors/<palette>/')
+@views_bp.route('/<palette>/')
 @login_required
 def colors(palette):
     """Example endpoint return a list of colors by palette
